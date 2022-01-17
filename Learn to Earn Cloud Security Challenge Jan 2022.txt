@@ -1,0 +1,47 @@
+Author: Sakura Satio
+Email: sakurasatio@gmail.com
+Youtube Channel Link: https://www.youtube.com/channel/UCiWP5KYh4MWj-yp3j-DMIrA
+
+⭐ COMPLETE GUIDE TO ALL LABS ⭐
+
+✨ LEARN TO EARN CLOUD SECURITY CHALLENGE JANUARY 2022 (08-01-2022 TO 16-01-2022) ✨
+
+⚡ Learn to Earn Cloud Security Challenge: Level 1
+Playlist: https://youtube.com/playlist?list=PLilqH7z8k68vknfA1JEUCeOT79_Wexc0R
+
+Cloud IAM: Qwik Start ➔ https://youtu.be/aqUVvpx3Up8
+Getting started with Certificate Authority Service: Qwik Start ➔ https://youtu.be/RTkP5az7hXM
+Apigee API Management Fundamentals ➔ https://youtu.be/um0LuRdtl8Q
+Rent-a-VM to Process Earthquake Data ➔ https://youtu.be/B6w4veokJ1c
+Cloud IDS: Qwik Start ➔ https://youtu.be/Iiwu6fBtVx8
+Getting Started with Cloud KMS ➔ https://youtu.be/ZD9A3uKbiWM
+Google Workspace Admin: Securing ➔ https://youtu.be/ztaI_UJpjG4
+IAM Custom Roles ➔ https://youtu.be/eExWb5kAUvc
+User Authentication: Identity-Aware Proxy ➔ https://youtu.be/YPn5D32NKRg
+Secure Workloads in Google Kubernetes Engine: Challenge Lab ➔ https://youtu.be/U6ZHS_0MFV8
+Prisma Cloud: Securing GKE Run Time ➔ https://youtu.be/1VOO1GkLF70
+Prisma Cloud: Protect your Cloud Instance with Host Defender ➔ https://youtu.be/N0qln1hJit4
+
+⚡ Learn to Earn Cloud Security Challenge: Level 2
+Playlist: https://youtube.com/playlist?list=PLilqH7z8k68uI2VB62PHca99fjf-ZSeXp
+
+How to Use a Network Policy on Google Kubernetes Engine ➔ https://youtu.be/JDVVKIvFjRI
+Securing Web Applications with Web Security Scanner ➔ https://youtu.be/wa9amFEyIFQ
+VPC Network Peering ➔ https://youtu.be/Q8C_5Ylnhqw
+Create an Internal Load Balancer ➔ https://youtu.be/YoDpFYOOhtA
+VPC Networks - Controlling Access ➔ https://youtu.be/MNPlumfQ83U
+HTTP Load Balancer with Cloud Armor ➔ https://youtu.be/8CfH5-MumuA
+Using Role-based Access Control in Kubernetes Engine ➔ https://youtu.be/Jr_9fw9A9LQ
+Ensure Access & Identity in Google Cloud: Challenge Lab ➔ https://youtu.be/vVvE-dvGs-Y
+
+⚡ Learn to Earn Cloud Security Challenge: Level 3
+Playlist: https://youtube.com/playlist?list=PLilqH7z8k68tYHSBzwqpsoVRrZu6ogU3e
+
+Managed Service for Microsoft Active Directory ➔ https://youtu.be/Zg8LMjpqo3g
+Migrating to GKE Containers ➔ https://youtu.be/I2Jin9ebsVs
+Setting up a Private Kubernetes Cluster ➔ https://youtu.be/Mvc3zaRNnmk
+Palo Alto Networks: Securing Google Anthos GKE in Hybrid Cloud with Prisma Cloud ➔ https://youtu.be/jqK6hiX94AY
+Prisma Cloud and XSOAR - Automate Incident Response Reverse Shell ➔ https://youtu.be/v_9epC3jLpU
+Multiple VPC Networks ➔ https://youtu.be/iFPLs6Gtyio
+Hardening Default GKE Cluster Configurations ➔ https://youtu.be/kjV7gWdUMbw
+Build and Secure Networks in Google Cloud: Challenge Lab ➔ https://youtu.be/OCG-e5I4Isk
