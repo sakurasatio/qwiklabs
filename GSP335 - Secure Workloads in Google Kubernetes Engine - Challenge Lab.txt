@@ -1,0 +1,157 @@
+Author: Sakura Satio
+Email: sakurasatio@gmail.com
+
+gsutil -m cp gs://cloud-training/gsp335/* .
+
+TASK 1:
+
+gcloud container clusters create <CLUSTER NAME> \
+   --zone us-central1-c \
+   --machine-type n1-standard-4 \
+   --num-nodes 2 \
+   --enable-network-policy
+   
+gcloud container clusters get-credentials <CLUSTER NAME>  --zone us-central1-c OR YOU CAN GO TO KUBERNETES CLUSTER AND CLICK ON THREE DOTS THEN CLICK ON CONNECT AND COPY THE CODE AND RUN IT ON CLOUD SHELL
+
+TASK 2:
+
+gcloud sql instances create <INSTANCE NAME> --region us-central1
+
+Then go to Navigation Menu > SQL
+
+Wait for Cloud SQL instance to get ready, once it is ready click on Databases tab
+
+Type "wordpress" for database name
+
+Click create
+
+Then go to Users tab
+
+Click ADD USER ACCOUNT
+
+Type "wordpress" for user name
+
+Enter any password you like (P@ssw8rd)
+
+Select Allow any host(%) for the name of the Host
+
+Click ADD
+
+Run the following commands in cloud shell:
+gcloud iam service-accounts create <SERVICE ACCOUNT NAME>
+
+gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \
+   --member="serviceAccount:<SERVICE ACCOUNT NAME>@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com" \
+   --role="roles/cloudsql.client"
+
+gcloud iam service-accounts keys create key.json --iam-account=<SERVICE ACCOUNT NAME>@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com
+
+kubectl create secret generic cloudsql-instance-credentials --from-file key.json
+
+kubectl create secret generic cloudsql-db-credentials \
+   --from-literal username=wordpress \
+   --from-literal password='P@ssw8rd'
+   
+kubectl create -f volume.yaml
+
+copy the 'Connection name'
+
+open editor and search for wordpress.yaml
+
+replace INSTANCE_CONNECTION_NAME with the connection name that you copied
+
+save the changes
+
+kubectl apply -f wordpress.yaml
+
+TASK 3:
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add stable https://charts.helm.sh/stable
+helm repo update
+helm install nginx-ingress stable/nginx-ingress
+
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.16.0/cert-manager.yaml
+
+kubectl get svc
+
+Check the service nginx-ingress-controller as an external IP address before continuing to the next step.
+
+sed -i s/LAB_EMAIL_ADDRESS/<SERVICE ACCOUNT NAME>@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com/g issuer.yaml
+
+kubectl apply -f issuer.yaml
+
+If you face any internal error, execute the command again.
+. add_ip.sh
+
+HOST_NAME=$(echo $USER | tr -d '_').labdns.xyz
+sed -i s/HOST_NAME/${HOST_NAME}/g ingress.yaml
+kubectl apply -f ingress.yaml
+
+TASK 4:
+
+Open network-policy.yaml
+
+must look something like this: 
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+   name: allow-world-to-nginx-ingress
+   namespace: default
+spec:
+   podSelector:
+      matchLabels:
+         app: nginx-ingress
+   policyTypes:
+   - Ingress
+   ingress:
+   - {}
+
+save the file 
+
+kubectl apply -f network-policy.yaml
+
+TASK 5:
+
+gcloud services enable \
+  container.googleapis.com \
+  containeranalysis.googleapis.com \
+  binaryauthorization.googleapis.com
+  
+gcloud container clusters update <CLUSTER NAME> --enable-binauthz --zone us-central1-c
+
+gcloud container binauthz policy export > bin-auth-policy.yaml
+
+nano bin-auth-policy.yaml
+
+Go to KUBERNETES CLUSTER
+Click on the cluster you made
+Go to edit
+Then find Binary Authorization and enable it
+
+Go to Security
+Select Binary Authorization from the left pane
+Edit the policy
+Project default rule: Disallow all images
+Add image paths:
+docker.io/library/wordpress:latest
+us.gcr.io/k8s-artifacts-prod/ingress-nginx/*
+gcr.io/cloudsql-docker/*
+quay.io/jetstack/*
+
+gcloud container binauthz policy import bin-auth-policy.yaml
+
+TASK 6:
+
+kubectl apply -f psp-restrictive.yaml (IF YOU GET ERROR HERE DONT WORRY)
+
+kubectl apply -f psp-role.yaml
+
+kubectl apply -f pop-use.yaml
+
+nano psp-restrictive.yaml
+
+replace appVersion: extensions/v1beta1 with policy/v1beta1
+
+kubectl apply -f psp-restrictive.yaml
