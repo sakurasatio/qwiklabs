@@ -123,8 +123,6 @@ gcloud container clusters update <CLUSTER NAME> --enable-binauthz --zone us-cent
 
 gcloud container binauthz policy export > bin-auth-policy.yaml
 
-nano bin-auth-policy.yaml
-
 Go to KUBERNETES CLUSTER
 Click on the cluster you made
 Go to edit
