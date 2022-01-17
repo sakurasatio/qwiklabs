@@ -146,7 +146,7 @@ kubectl apply -f psp-restrictive.yaml (IF YOU GET ERROR HERE DONT WORRY)
 
 kubectl apply -f psp-role.yaml
 
-kubectl apply -f pop-use.yaml
+kubectl apply -f psp-use.yaml
 
 nano psp-restrictive.yaml
 
