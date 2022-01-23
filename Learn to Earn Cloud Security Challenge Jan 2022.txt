@@ -40,7 +40,7 @@ Playlist: https://youtube.com/playlist?list=PLilqH7z8k68tYHSBzwqpsoVRrZu6ogU3e
 Managed Service for Microsoft Active Directory ➔ https://youtu.be/Zg8LMjpqo3g
 Migrating to GKE Containers ➔ https://youtu.be/I2Jin9ebsVs
 Setting up a Private Kubernetes Cluster ➔ https://youtu.be/Mvc3zaRNnmk
-Palo Alto Networks: Securing Google Anthos GKE in Hybrid Cloud with Prisma Cloud ➔ https://youtu.be/jqK6hiX94AY
+Palo Alto Networks: Securing Google Anthos GKE in Hybrid Cloud with Prisma Cloud ➔ https://youtu.be/jqK6hiX94AY (UPDATED VERSION: https://youtu.be/EDYEEP_xmJY)
 Prisma Cloud and XSOAR - Automate Incident Response Reverse Shell ➔ https://youtu.be/v_9epC3jLpU
 Multiple VPC Networks ➔ https://youtu.be/iFPLs6Gtyio
 Hardening Default GKE Cluster Configurations ➔ https://youtu.be/kjV7gWdUMbw
