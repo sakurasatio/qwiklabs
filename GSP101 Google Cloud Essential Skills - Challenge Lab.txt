@@ -4,7 +4,7 @@ CHECKPOINT 1:
 Go to VM instances
 
 Create Instance 
-Name: apache
+Name: <instance name given in task 1>
 Machine: N1
 Boot Disk: 
 OS --> Debian
