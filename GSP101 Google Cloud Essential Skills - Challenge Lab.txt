@@ -1,0 +1,25 @@
+GSP101 Google Cloud Essential Skills: Challenge Lab
+
+CHECKPOINT 1:
+Go to VM instances
+
+Create Instance 
+Name: apache
+Machine: N1
+Boot Disk: 
+OS --> Debian
+Version --> Debian GNU/Linux 9 (stretch)
+Standard persistent Disk 10 GB
+Allow HTTP and HTTPS Traffic
+Create
+
+CHECKPOINT 2:
+Open SSH of apache VM you just created
+run these commands:
+sudo su -
+sudo apt-get update
+sudo apt-get install apache2 -y
+service --status-all
+
+CHECKPOINT 3: 
+Click on the external IP of apache VM that you had created before
