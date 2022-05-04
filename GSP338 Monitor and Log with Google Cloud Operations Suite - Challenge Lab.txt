@@ -35,13 +35,14 @@ click save
 
 Click start/resume VM
 
+(Task 2 will get completed along with task 3)
 
 
 #Task 3: Create a custom metric using Cloud Operations logging events
 
 Go to logs explorer and type what is written below:
 
-textPayLoad=~"file_format\: ([4,8]K).*"
+textPayload=~"file_format\: ([4,8]K).*"
 
 Run Query
 
@@ -51,7 +52,7 @@ Log metric name: <Custom Metric Name>
 
 create metric
 
-
+**Task 2 and 3 gets completed here.**
 
 #Task 4. Check that custom metrics for the video service have been added to the media dashboard
 
@@ -79,4 +80,4 @@ Go to monitoring > Alert
   - Metric: logging/user/<Custom Metric Name>
   - Threshold: <given threshold>
   - For: 1 minute
-  - Name your alert with name of your choice
+  - Name your alert with name of your choice example: "large video uploads"
