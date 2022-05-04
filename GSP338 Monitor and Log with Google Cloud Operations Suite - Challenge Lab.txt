@@ -1,0 +1,82 @@
+GSP338 Monitor and Log with Google Cloud Operations Suite: Challenge Lab
+
+
+
+#Task 1: Configure Cloud Monitoring
+
+Go to monitoring
+
+Go to Dashboards
+
+Search for Media_Dashboard
+
+If present then your task 1 is done
+
+
+
+#Task 2: Configure a Compute Instance to generate Custom Cloud Monitoring metrics
+
+Go to VM instances
+
+check box "video-queue-monitor" and stop the VM
+
+click on VM "video-queue-monitor" and then click on edit
+
+copy the startup script into notepad
+
+edit the following things in notepad:
+- project id
+- instance id
+- zone
+
+copy paste it into the startup-script
+
+click save
+
+Click start/resume VM
+
+
+
+#Task 3: Create a custom metric using Cloud Operations logging events
+
+Go to logs explorer and type what is written below:
+
+textPayLoad=~"file_format\: ([4,8]K).*"
+
+Run Query
+
+Actions: Create metric
+Type: Counter
+Log metric name: <Custom Metric Name>
+
+create metric
+
+
+
+#Task 4. Check that custom metrics for the video service have been added to the media dashboard
+
+Go to Monitoring > Dashboard
+
+- Click Media Dashboard
+- Add Chart
+- Resource Type: VM Instance
+- Metrics: OpenCensus/my.videoservice.org/measure/input_queue_size (uncheck Only show active)
+- Filter: instance_id, click your video-queue-monitor instance id (from Task 2) then Apply
+
+SAVE
+
+Add Chart
+
+- Resource: VM Instance
+- Metric: logging/user/<Custom Metric Name>
+
+
+
+#Task 5: Create a Cloud Operations alert based on the rate of high resolution video file uploads
+
+Go to monitoring > Alert
+- Create Policy
+  - Metric: logging/user/<Custom Metric Name>
+  - Threshold: <given threshold>
+  - For: 1 minute
+  - Name your alert with name of your choice
