@@ -72,7 +72,11 @@ docker push gcr.io/$GOOGLE_CLOUD_PROJECT/<Image Name>:<New Tag Name>
 
 kubectl edit deployment valkyrie-dev
 
-change replicas from 1 to the given count
+change replicas from 1 to 2 
+
+change image name from what it is to the new tag name at the end
+
+save the changes
 
 docker ps
 
