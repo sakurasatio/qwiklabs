@@ -1,0 +1,137 @@
+GSP318 Deploy to Kubernetes in Google Cloud: Challenge Lab
+
+===> Step 1: Create a Docker image and store the Dockerfile
+
+gsutil cat gs://cloud-training/gsp318/marking/setup_marking.sh | bash
+
+gcloud source repos clone valkyrie-app
+
+cd valkyrie-app
+
+cat > Dockerfile <<EOF
+FROM golang:1.10
+WORKDIR /go/src/app
+COPY source .
+RUN go install -v
+ENTRYPOINT ["app","-single=true","-port=8080"]
+EOF
+
+docker build -t <Image name>:<Tag name> .
+
+cd ..
+
+cd marking
+
+./step1.sh
+
+===> Step 2:Test the created Docker image
+
+cd ..
+
+cd valkyrie-app
+
+docker run -p 8080:8080 <Image Name>:<Tag Name> &
+
+cd ..
+
+cd marking
+
+./step2.sh
+
+===> Step 3: Push the Docker image in the Container Repository
+
+make sure you are out of the marking folder... to get out of the marking folder run: cd ..
+
+cd valkyrie-app
+
+docker tag valkyrie-app:v0.0.1 gcr.io/$GOOGLE_CLOUD_PROJECT/<Image Name>:<Tag Name>
+
+docker push gcr.io/$GOOGLE_CLOUD_PROJECT/<Image Name>:<Tag Name>
+
+sed -i s#IMAGE_HERE#gcr.io/$GOOGLE_CLOUD_PROJECT/<Image Name>:<Tag Name>#g k8s/deployment.yaml
+
+===> Step 4: Create and expose a deployment in Kubernetes 
+
+sed -i s#IMAGE_HERE#gcr.io/$GOOGLE_CLOUD_PROJECT/<Image Name>:<Tag Name>#g k8s/deployment.yaml
+
+gcloud container clusters get-credentials valkyrie-dev --zone us-east1-d
+
+kubectl create -f k8s/deployment.yaml
+
+kubectl create -f k8s/service.yaml
+
+git merge origin/kurt-dev
+
+kubectl edit deployment valkyrie-dev
+
+===> Step 5: Update the deployment with a new version of valkyrie-app
+
+docker build -t gcr.io/$GOOGLE_CLOUD_PROJECT/<Image Name>:<Tag Name>.2 . 
+
+docker push gcr.io/$GOOGLE_CLOUD_PROJECT/<Image Name>:<Tag Name>.2
+
+kubectl edit deployment valkyrie-dev
+
+change replicas from 1 to the given count
+
+docker ps
+
+===> Step 6: Create a pipeline in Jenkins to deploy your app
+
+docker kill [container_id]
+
+export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/component=jenkins-master" -l "app.kubernetes.io/instance=cd" -o jsonpath="{.items[0].metadata.name}")
+kubectl port-forward $POD_NAME 8080:8080 >> /dev/null &
+printf $(kubectl get secret cd-jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+
+gcloud source repos list
+
+*OPEN ON WEB 8080 PORT*
+
+PUT USERNAME AND PASSWORD
+
+JENKINS 
+
+MANAGE CREDENTIALS 
+
+GLOBAL 
+
+SELECT YOUR PROJECT ID 
+
+NEW 
+
+valkyrie-app 
+
+PIPELINE 
+
+PIPELINE SCRIPT FROM SCM
+
+GIT 
+
+SELECT YOUR REPO
+
+APPLY
+
+SAVE
+
+sed -i "s/green/orange/g" source/html.go
+
+*Update project in Jenkinsfile*
+
+sed -i "s/YOUR_PROJECT/$GOOGLE_CLOUD_PROJECT/g" Jenkinsfile
+
+git config --global user.email "you@example.com"
+
+git config --global user.name "student"               
+
+git add .
+
+git commit -m "built pipeline init"
+
+git push 
+
+JENKINS 
+
+BUILD NOW
+
+IT WILL TAKE TIME! WAIT PATIENTLY!!!
