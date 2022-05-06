@@ -36,7 +36,7 @@ cd ..
 
 cd marking
 
-./step2.sh
+./step2_v2.sh
 
 ===> Step 3: Push the Docker image in the Container Repository
 
