@@ -22,7 +22,7 @@ cd ..
 
 cd marking
 
-./step1.sh
+./step1_v2.sh
 
 ===> Step 2:Test the created Docker image
 
