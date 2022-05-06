@@ -64,7 +64,7 @@ gcloud run deploy <TASK 3 SERVICE NAME> --max-instances=1 --image gcr.io/${PROJE
 
 gcloud run services list
 
-BILLING_URL=$(gcloud run services describe <PRIVATE BILLING SERVICE NAME> \
+BILLING_URL=$(gcloud run services describe <TASK 3 SERVICE NAME> \
   --platform managed \
   --region us-central1 \
   --format "value(status.url)")
